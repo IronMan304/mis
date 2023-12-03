@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Tool;
 
-use App\Models\Tool;
+use App\Models\ToolName;
 use App\Models\Status;
 use Livewire\Component;
 use App\Models\Department;
@@ -15,10 +15,10 @@ class ToolList extends Component
     public $message = '';  //flash
 
     protected $listeners = [
-        'refreshParentTool' => '$refresh',
-        'deleteTool',
-        'editTool',
-        'deleteConfirmTool'
+        'refreshParentToolName' => '$refresh',
+        'deleteToolName',
+        'editToolName',
+        'deleteConfirmToolName'
     ];
 
     public function updatingSearch()
@@ -26,29 +26,22 @@ class ToolList extends Component
         $this->emit('refreshTable');
     }
 
-    public function createTool()
+    public function createToolName()
     {
         $this->emit('resetInputFields');
-        $this->emit('openToolModal');
+        $this->emit('openToolNameModal');
     }
 
-    public function editTool($toolId)
+    public function editToolName($toolId)
     {
         $this->toolId = $toolId;
         $this->emit('toolId', $this->toolId);
-        $this->emit('openToolModal');
+        $this->emit('openToolNameModal');
     }
 
-    // public function setResult($toolId)
-    // {
-    //     $this->toolId = $toolId;
-    //     $this->emit('toolId', $this->toolId);
-    //     $this->emit('openResultModal');
-    // }
-
-    public function deleteTool($toolId)
+    public function deleteToolName($toolId)
     {
-        Tool::destroy($toolId);
+        ToolName::destroy($toolId);
 
         $action = 'error';
         $message = 'Successfully Deleted';
@@ -60,15 +53,13 @@ class ToolList extends Component
     public function render()
     {
         if (empty($this->search)) {
-            $tools  = Tool::all();
+            $toolnames  = ToolName::all();
         } else {
-            $tools  = Tool::where('name', 'LIKE', '%' . $this->search . '%')->get();
+            $toolnames  = ToolName::where('description', 'LIKE', '%' . $this->search . '%')->get();
         }
-        $statuses = Status::all();
 
         return view('livewire.tool.tool-list', [
-            'tools' => $tools,
-            'statuses' => $statuses
+            'toolnames' => $toolnames,
         ]);
     }
 }

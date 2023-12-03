@@ -44,9 +44,9 @@
                     <table class="table border-0 custom-table comman-table datatable mb-0">
                         <thead>
                             <tr>
-                                <th style="width: 30%">Name</th>
+                                <th style="width: 30%">Tool Category</th>
                                 <!-- <th style="width: 30%">Condition</th> -->
-                                <th style="width: 30%">Quantity</th>
+                                <th style="width: 30%">Tool Name</th>
                                 <th>Action</th>
                                 {{--<th style="width: 15%">Department</th>
                                 <th style="width: 30%">Description</th>
@@ -57,23 +57,11 @@
                             @foreach ($tools as $tool)
                                 <tr>
                                     <td>
-                                        {{ $tool->name }}
-                                    </td>
-                                    <!-- <td>
-                                        {{ $tool->status->name ?? '' }}
-                                    </td> -->
-                                    <td>
-                                        {{ $tool->quantity ?? '' }}
-                                    </td>
-                                    {{--<td>
-                                        {{ $tool->department->name }}
+                                        {{ $tool->category->description }}
                                     </td>
                                     <td>
-                                        {{ $tool->description }}
+                                        {{ $tool->description ?? '' }}
                                     </td>
-                                    <td class="text-end">
-                                        {{ number_format($tool->price, 2) }}
-                                    </td>--}}
                                     <td class="text-center">
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-primary btn-sm mx-1"

@@ -27,9 +27,9 @@
 		</a>
 	</div>
 	<a id="toggle_btn" href="#"><img src="{{ asset('assets/img/icons/bar-icon.svg') }}" alt></a>
-	@if(!auth()->user()->hasRole('Patient'))
+
 	<a id="mobile_btn" class="mobile_btn float-start" href="#sidebar"><img src="{{ asset('assets/img/icons/bar-icon.svg') }}" alt></a>
-	@endif
+
 	<div class="top-nav-search mob-view">
 		<form>
 			<input type="text" class="form-control" placeholder="Search here">

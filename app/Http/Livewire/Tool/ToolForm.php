@@ -3,12 +3,12 @@
 namespace App\Http\Livewire\Tool;
 
 use Livewire\Component;
-use App\Models\Tool;
+use App\Models\ToolName;
 use App\Models\Department;
 
 class ToolForm extends Component
 {
-    public $toolId, $name, $status, $quantity;
+    public $toolNameId, $description;
     public $action = '';  //flash
     public $message = '';  //flash
 
@@ -38,13 +38,12 @@ class ToolForm extends Component
     public function store()
     {
         $data = $this->validate([
+            'category' => 'required',
             'name' => 'required',
-            // 'status' => 'required',
-            'quantity' => 'required',
         ]);
 
         if ($this->toolId) {
-            $tool = Tool::find($this->toolId);
+            $tool = Tools::find($this->toolId);
             $tool->update([
                 'name' => $this->name,
                 // 'status' => $this->status,
@@ -53,7 +52,7 @@ class ToolForm extends Component
             $action = 'edit';
             $message = 'Successfully Updated';
         } else {
-            Tool::create([
+            Tools::create([
                 'name' => $this->name,
                 // 'status' => $this->status,
                 'quantity' => $this->quantity,
