@@ -21,6 +21,14 @@
                         <input type="text" class="form-control" wire:model="name" placeholder />
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="form-group local-forms">
+                        <label>Quantity
+                            <span class="login-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" wire:model="quantity" placeholder />
+                    </div>
+                </div>
                 {{--<div class="col-md-6">
                     <div class="form-group local-forms">
                         <label>Department

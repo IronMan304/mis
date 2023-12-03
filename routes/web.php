@@ -1,15 +1,17 @@
 <?php
 
+use App\Models\Customer;
 use App\Http\Livewire\Tool\ToolList;
 use App\Http\Livewire\User\UserList;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Status\StatusList;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardController;
 
-use App\Http\Livewire\Authentication\RoleList;
-use App\Http\Livewire\Authentication\PermissionList;
+use App\Http\Livewire\Customer\CustomerList;
+use App\Http\Controllers\DashboardController;
+// use App\Http\Livewire\Authentication\RoleList;
+// use App\Http\Livewire\Authentication\PermissionList;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +39,10 @@ Route::middleware('auth')->group(function () {
     
     Route::get('status', StatusList::class);
 
-    Route::get('permission', PermissionList::class);
-    Route::get('role', RoleList::class);
+    // Route::get('permission', PermissionList::class);
+    // Route::get('role', RoleList::class);
 
+    Route::get('customers', CustomerList::class);
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

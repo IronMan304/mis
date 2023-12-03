@@ -15,32 +15,26 @@
         <div class="col-sm-12">
             <div class="card card-table show-entire">
                 <div class="card-body">
-                    <div class="page-table-header mb-2">
+                <div class="page-table-header mb-2">
                         <div class="row align-items-center">
                             <div class="col">
                                 <div class="doctor-table-blk">
                                     <h3>Tool List</h3>
                                     <div class="doctor-search-blk">
                                         <div class="add-group">
-                                            <a wire:click="createTool" class="btn btn-primary ms-2">
-                                                <img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
-                                            </a>
-                                            {{--<a href="/serviceGroups" class="btn btn-primary ms-2 bt-sty">
-                                                <i class="fa-solid fa-object-group"></i>
-                                            </a>--}}
+                                            <a wire:click="createTool" class="btn btn-primary ms-2" id="open-form-button"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-auto text-end float-end ms-auto download-grp">
-                            <div class="top-nav-search table-search-blk">
-                                <form>
-                                    <input type="text" class="form-control" placeholder="Search here"
-                                        wire:model.debounce.500ms="search" name="search">
-                                    <a class="btn"><img src="{{ asset('assets/img/icons/search-normal.svg') }}"
-                                            alt></a>
-                                </form>
+                            <div class="col-auto text-end float-end ms-auto download-grp">
+                                <div class="top-nav-search table-search-blk">
+                                    <form>
+                                        <input type="text" class="form-control" placeholder="Search here" wire:model.debounce.500ms="search" name="search">
+                                        <a class="btn"><img src="{{ asset('assets/img/icons/search-normal.svg') }}" alt></a>
+                                    </form>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -51,6 +45,9 @@
                         <thead>
                             <tr>
                                 <th style="width: 30%">Name</th>
+                                <!-- <th style="width: 30%">Condition</th> -->
+                                <th style="width: 30%">Quantity</th>
+                                <th>Action</th>
                                 {{--<th style="width: 15%">Department</th>
                                 <th style="width: 30%">Description</th>
                                 <th style="width: 25%">Price</th>--}}
@@ -61,6 +58,12 @@
                                 <tr>
                                     <td>
                                         {{ $tool->name }}
+                                    </td>
+                                    <!-- <td>
+                                        {{ $tool->status->name ?? '' }}
+                                    </td> -->
+                                    <td>
+                                        {{ $tool->quantity ?? '' }}
                                     </td>
                                     {{--<td>
                                         {{ $tool->department->name }}

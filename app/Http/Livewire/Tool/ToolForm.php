@@ -8,7 +8,7 @@ use App\Models\Department;
 
 class ToolForm extends Component
 {
-    public $toolId, $name;
+    public $toolId, $name, $status, $quantity;
     public $action = '';  //flash
     public $message = '';  //flash
 
@@ -30,6 +30,8 @@ class ToolForm extends Component
         $this->toolId = $toolId;
         $tool = Tool::whereId($toolId)->first();
         $this->name = $tool->name;
+        $this->status = $tool->status;
+        $this->quantity = $tool->quantity;
     }
 
     //store
@@ -37,18 +39,24 @@ class ToolForm extends Component
     {
         $data = $this->validate([
             'name' => 'required',
+            // 'status' => 'required',
+            'quantity' => 'required',
         ]);
 
         if ($this->toolId) {
             $tool = Tool::find($this->toolId);
             $tool->update([
                 'name' => $this->name,
+                // 'status' => $this->status,
+                'quantity' => $this->quantity,
             ]);
             $action = 'edit';
             $message = 'Successfully Updated';
         } else {
             Tool::create([
                 'name' => $this->name,
+                // 'status' => $this->status,
+                'quantity' => $this->quantity,
             ]);
             $action = 'edit';
             $message = 'Successfully Created';

@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Tool;
 
-use App\Models\Department;
 use App\Models\Tool;
+use App\Models\Status;
 use Livewire\Component;
+use App\Models\Department;
 
 class ToolList extends Component
 {
@@ -63,9 +64,11 @@ class ToolList extends Component
         } else {
             $tools  = Tool::where('name', 'LIKE', '%' . $this->search . '%')->get();
         }
+        $statuses = Status::all();
 
         return view('livewire.tool.tool-list', [
-            'tools' => $tools
+            'tools' => $tools,
+            'statuses' => $statuses
         ]);
     }
 }

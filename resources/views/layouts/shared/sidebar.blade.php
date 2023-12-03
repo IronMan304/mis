@@ -29,7 +29,7 @@
 						</a>
 					</li>--}}
 					<li>
-						<a href="/booking"><span class="menu-side"><i class="fa-solid fa-calendar-check"></i></span>
+						<a href="/transaction"><span class="menu-side"><i class="fa-solid fa-calendar-check"></i></span>
 							<span>Transaction</span></a>
 					</li>
 	
